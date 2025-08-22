@@ -12,16 +12,18 @@ spring:
               predicates:
                 - Path=/api/v1/users/**
               filters:
-                - StripPrefix=1
+                - StripPrefix=2
 
             - id: post-service
               uri: lb://POST-SERVICE
               predicates:
                 - Path=/api/v1/posts/**
               filters:
-                - StripPrefix=1
+                - StripPrefix=2
 
 eureka:
+  instance:
+    prefer-ip-address: true
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
