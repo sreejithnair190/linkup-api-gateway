@@ -20,6 +20,15 @@ spring:
                 - Path=/api/v1/posts/**
               filters:
                 - StripPrefix=2
+                - name: AuthenticationFilter
+
+            - id: connection-service
+              uri: lb://CONNECTION-SERVICE
+              predicates:
+                - Path=/api/v1/connections/**
+              filters:
+                - StripPrefix=2
+                - name: AuthenticationFilter
 
 eureka:
   instance:
@@ -30,3 +39,8 @@ eureka:
 
 server:
   port: 8080
+
+
+jwt:
+  secret-key: CVs23aGVCYGBHas34t34jcU32YGSAVCU45ysAcygsrewaCG
+  expiration: 86400000
